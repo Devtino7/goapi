@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"net/http"
 
+	"github.com/Devtino7/goapi/schemas"
 	"github.com/gin-gonic/gin"
 )
 
@@ -22,4 +23,14 @@ func sendSucess(ctx *gin.Context, op string, data interface{}) {
 		"message": fmt.Sprintf("operation from handler: %s successfull", op),
 		"data":    data,
 	})
+}
+
+type ErrorResponse struct {
+	Message   string `json:"message"`
+	ErrorCode string `json: "errorCode"`
+}
+
+type CreateOpeningResponse struct {
+	Message string                  `json: "message"`
+	Data    schemas.OpeningResponse `json:"data"`
 }
